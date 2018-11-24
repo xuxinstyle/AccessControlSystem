@@ -89,7 +89,7 @@
    <select id="findByFuzzyName" parameterType="java.lang.String" resultType="com.system.po.User">
   	select *
   	from user
-  	where username like '%${username}%' and roleName!='superadmin' and roleName='admin'
+  	where username like '%${value}%' and roleName!='superadmin' and roleName='admin'
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

@@ -29,10 +29,11 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4" id="login-box">
 				<form name="formlogin" role="form" action="" id="from1" method="post">
-				  <div class="form-group">
+				 
+				   <div class="form-group">
 				    <label for="firstname" class="col-sm-3 control-label">用户名</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="username" placeholder="请输入名字" name="username">
+				      <input type="text" class="form-control" id="userID" placeholder="请输入名字" name="username">
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -45,11 +46,15 @@
 				  <div class="form-group pull-right" style="margin-right: 15px;">
 				    <div class="col-sm-offset-2 col-sm-10">
 				      <input type="button" class="btn btn-default btn-info" onclick="javascript:document.formlogin.action='${pageContext.request.contextPath}/login';document.formlogin.submit();" value="登录"></input>
-				      <input type="button" class="btn btn-default btn-info" onclick="javascript:document.formlogin.action='${pageContext.request.contextPath}/facelogin';document.formlogin.submit();" value="刷脸登录"></input>
 				    </div>
-				    
+				    <div class="col-sm-offset-2 col-sm-10">
+				    	
+				    </div>
 				  </div>
+				  
+				  
 				</form>
+				
 			</div>
 			<div class="col-md-4"></div>
 		</div>		

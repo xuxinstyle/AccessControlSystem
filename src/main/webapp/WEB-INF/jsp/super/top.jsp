@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Jacey
-  Date: 2017/6/30
-  Time: 9:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--shiro标签--%>
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
@@ -15,7 +8,7 @@
             <!--加入导航条标题-->
             <div class="navbar navbar-default" role="navigation">
                 　<div class="navbar-header">
-                　    <a href="##" class="navbar-brand">基于人脸识别的门禁系统(超级管理员)</a>
+                　    <a href="${pageContext.request.contextPath}/super/showUser" class="navbar-brand">基于人脸识别的门禁信息管理系统(超级管理员)</a>
                 　</div>
                 <form action="##" class="navbar-form navbar-right" rol="search">
                     <div class="dropdown">
@@ -26,7 +19,7 @@
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/super/editUser">
                                     <span class="glyphicon glyphicon-cog pull-right"></span>
                                     修改个人信息
                                 </a>

@@ -16,6 +16,7 @@ import com.system.po.User;
 import com.system.po.UserExample;
 import com.system.po.UserExample.Criteria;
 import com.system.service.AdminService;
+import com.system.service.RemoveUtilService;
 @Service
 public class AdminServiceImpl implements AdminService {
 	
@@ -24,6 +25,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Resource
 	private AdminPageMapper adminPageMapper;
+	
+	@Resource
+	private RemoveUtilService removeUtilService;
 	
 	@Override
 	public List<User> findByPaging(Integer toPageNo) throws Exception {
@@ -76,6 +80,13 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void removeByPrimaryKey(String username) throws Exception {
+		User user = adminMapper.selectByPrimaryKey(username);
+		if(user.getImagepath()!=null){
+			removeUtilService.RemoveFile(user.getImagepath());
+		}
+		if(user.getCsvpath()!=null){
+			removeUtilService.RemoveFile(user.getCsvpath());
+		}
 		adminMapper.deleteByPrimaryKey(username);
 		
 	}

@@ -48,6 +48,7 @@
 									<label class="checkbox-inline">
 										<input type="radio" name="rolename" value="admin" checked>管理员
 									</label>
+				
 							    </div>
 							 
 							  
@@ -63,7 +64,7 @@
 							    </div>
 							    <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
 							    <div class="col-sm-10">
-							   		<!-- 此处不能使用<button />标签这样会默认提交表单 -->
+							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
 							   		<input type="button" onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
 							     
 							    </div>
@@ -71,6 +72,7 @@
 							    <c:if test='${user.imagepath!=null}'>
 									<input style="display:none"   type="text" name="imagepath" value="${user.imagepath}"> 
 								</c:if>
+								
 							    <c:if test='${user.opennum!=null}'>
 									<input style="display:none"   type="text" name="opennum" value="${user.opennum}"> 
 								</c:if>

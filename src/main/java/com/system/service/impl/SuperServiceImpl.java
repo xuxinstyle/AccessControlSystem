@@ -15,6 +15,7 @@ import com.system.po.PagingVO;
 import com.system.po.User;
 import com.system.po.UserExample;
 import com.system.po.UserExample.Criteria;
+import com.system.service.RemoveUtilService;
 import com.system.service.SuperService;
 
 @Service
@@ -25,6 +26,9 @@ public class SuperServiceImpl implements SuperService {
 	
 	@Resource
 	private SuperPageMapper superPageMapper;
+	
+	@Resource
+	private RemoveUtilService removeUtilService;
 	
 	@Override
 	public List<User> findByPaging(Integer toPageNo) throws Exception {
@@ -59,7 +63,7 @@ public class SuperServiceImpl implements SuperService {
 	public List<User> findByName(String username) throws Exception {
 		System.out.println(username);
 		List<User> list=superMapper.findByFuzzyName(username);
-		System.out.println(list);
+		System.out.println("list:"+list);
 		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			User user = (User) iterator.next();
 			System.out.println("搜索："+user.getUsername());
@@ -76,6 +80,13 @@ public class SuperServiceImpl implements SuperService {
 
 	@Override
 	public void removeByPrimaryKey(String username) throws Exception {
+		User user = superMapper.selectByPrimaryKey(username);
+		if(user.getImagepath()!=null){
+			removeUtilService.RemoveFile(user.getImagepath());
+		}
+		if(user.getCsvpath()!=null){
+			removeUtilService.RemoveFile(user.getCsvpath());
+		}
 		superMapper.deleteByPrimaryKey(username);
 		
 	}

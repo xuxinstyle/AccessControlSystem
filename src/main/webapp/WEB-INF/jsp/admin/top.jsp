@@ -15,7 +15,7 @@
             <!--加入导航条标题-->
             <div class="navbar navbar-default" role="navigation">
                 　<div class="navbar-header">
-                　    <a href="##" class="navbar-brand">基于人脸识别的门禁系统(管理员)</a>
+                　    <a href="${pageContext.request.contextPath}/admin/showUser" class="navbar-brand">基于人脸识别的门禁信息管理系统(管理员)</a>
                 　</div>
                 <form action="##" class="navbar-form navbar-right" rol="search">
                     <div class="dropdown">

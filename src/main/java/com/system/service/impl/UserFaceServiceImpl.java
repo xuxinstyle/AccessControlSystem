@@ -4,25 +4,31 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.springframework.stereotype.Service;
 
-import com.system.mapper.SuperMapper;
+import com.system.mapper.LoginMapper;
 import com.system.po.User;
 import com.system.service.UserFaceService;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 @Service
 public class UserFaceServiceImpl implements UserFaceService {
 
 	@Resource
-	private SuperMapper superMapper;
+	private LoginMapper loginMapper;
 	/**
 	 * 调用摄像头保存照片到相应目录下
 	 */
-	public void getFace(String id) {
+	public void getFace(String username) {
 		// TODO Auto-generated method stub
 		
 		try {
@@ -30,7 +36,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 	        String courseFile;
 			courseFile = directory.getCanonicalPath();
 			System.out.println(courseFile);
-			User user = superMapper.selectByPrimaryKey(id);
+			User user = loginMapper.selectByPrimaryKey(username);
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
 			
@@ -61,7 +67,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 			} 
 			if(lag==0){
 				user.setImagepath(path_save);
-				superMapper.updateByPrimaryKey(user);
+				loginMapper.updateByPrimaryKey(user);
 			}
 			proc.waitFor();// 等待命令执行完成 
 			/*// 打印流信息 
@@ -89,7 +95,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 			String courseFile = directory.getCanonicalPath();
 			System.out.println(courseFile);
 			
-			User user = superMapper.selectByPrimaryKey(id);
+			User user = loginMapper.selectByPrimaryKey(id);
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
 			
@@ -120,8 +126,8 @@ public class UserFaceServiceImpl implements UserFaceService {
 				outStream.write(buffer, 0, len); 
 			} 
 			if(flag==0){
-				user.setCsvpath(path_cvs+"default_person.csv");
-				superMapper.updateByPrimaryKey(user);
+				user.setCsvpath(path_cvs);
+				loginMapper.updateByPrimaryKey(user);
 				System.out.println("录入成功");
 			}
 			proc.waitFor();// 等待命令执行完成 
@@ -139,5 +145,71 @@ public class UserFaceServiceImpl implements UserFaceService {
 		}
        
 	}
+	
+	@Override
+	public User CheckFace() {
+		//System.out.println("开始识别人脸---");
+		try {
+			File directory = new File("");// 参数为空
+			String courseFile = directory.getCanonicalPath();
+			//System.out.println(courseFile);
+			
+			// 若Python脚本在windows主机中 
+			String root_path=courseFile+"\\src\\main\\webapp\\";
+			
+			String cmdStr_windows = root_path+"py\\face_reco_from_camera.py"; 
+			
+			String DatRecourse_path=root_path+"py\\";
+			String path_cvs = root_path+"csvs\\";
+			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path};
+			/*for (int i = 0; i < args.length; i++) {
+				String string = args[i];
+				System.out.println(string);
+			}*/
+			// 定义缓冲区、正常结果输出流、错误信息输出流 
+			byte[] buffer = new byte[1024]; 
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream(); 
+			ByteArrayOutputStream outerrStream = new ByteArrayOutputStream(); 
+			
+			Process proc=Runtime.getRuntime().exec(args); 
+			InputStream errStream = proc.getErrorStream(); 
+			InputStream stream = proc.getInputStream(); // 流读取与写入 
+			int len = -1; 
+			int flag=0;
+			while ((len = errStream.read(buffer)) != -1) { 
+				outerrStream.write(buffer, 0, len); 
+				flag=1;
+			} while ((len = stream.read(buffer)) != -1) { 
+				outStream.write(buffer, 0, len); 
+			} 
+			if(flag==0){
+				System.out.println("识别成功,开门");
+			}
+			proc.waitFor();// 等待命令执行完成 
+			// 打印流信息 
+			System.out.println(outStream.toString()); 
+			System.out.println(outerrStream.toString()); 
+			// 将接收的输出结果转换为目标类型 
+			String username=outStream.toString();
+			//System.out.println("outStream:"+username);
+			if(username!=null){
+				Pattern p=Pattern.compile("\\s*|\t|\r|\n");
+				Matcher m=p.matcher(username);
+				username=m.replaceAll("");
+			}
+			User user = loginMapper.selectByPrimaryKey(username);
+			//System.out.println("loginMapper:"+user.getUsername());
+			return user;
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return null;
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 
 }

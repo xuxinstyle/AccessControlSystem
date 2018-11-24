@@ -36,7 +36,7 @@
 							<td style="padding-top:30px"><font
 								style="font-weight:bold; color:#FF0000">人脸信息录入成功</font><br />
 									
-								<br /> <a href="javascript:history.back(-1)"><span id="second">5</span>秒后自动为您转跳回上一页,或点击此处跳转</a>
+								<br /> <a href="${pageContext.request.contextPath}/admin/showUser"><span id="second">5</span>秒后自动为您转跳回首页,或点击此处跳转</a>
 							
 							</td>
 						</tr>

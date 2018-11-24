@@ -33,32 +33,29 @@
 							  <div class="form-group">
 							    <label for="inputPassword3" class="col-sm-2 control-label">用户名</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="inputusername" name="username" placeholder="请输入用户名"
+							      <input type="text" class="form-control" id="inputusername" name="username" placeholder="请输入用户名">
 								  
 							    </div>
-							  </div>
-							  <div class="form-group">
+							  
 							    <label for="inputPassword3" class="col-sm-2 control-label">用户权限</label>
 							    <div class="col-sm-10">
 								    <label class="checkbox-inline">
-									   	<input type="radio" name="rolename" value="admin" checked>管理员
+									   	<input type="radio" name="rolename" value="admin" checked>管理员</input>
 									</label>
 									<label class="checkbox-inline">
-										<input type="radio" name="rolename" value="user">用户
+										<input type="radio" name="rolename" value="user"/>用户
 									</label>
 							    </div>
-							  </div>
-							  <div class="form-group">
+							  
 							    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"
+							      <input type="text" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"/>
 								  
 							    </div>
-							  </div>
-							   <div class="form-group">
+						
 							    <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"
+							      <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
 								  
 							    </div>
 							  </div>

@@ -10,18 +10,7 @@
 <head>
     <title>成功页面</title>
     <script type="text/javascript">
-		onload=function(){
-			setInterval(go, 1000);
-		};
-		var x=3; //利用了全局变量来执行
-		function go(){
-			x--;
-			if(x>0){
-				document.getElementById("sp").innerHTML=x; //每次设置的x的值都不一样了。
-			}else{
-				location.href='${pageContext.request.contextPath}/user/showUser';
-			}
-		}
+		
 	</script> 
 </head>
 <body>
@@ -33,11 +22,8 @@
 						border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
 							
-							<td style="padding-top:30px"><font
-								style="font-weight:bold; color:#FF0000">人脸信息录入成功</font><br />
-									
-								<br /> <a href="${pageContext.request.contextPath}/user/showUser"><span id="second">5</span>秒后自动为您转跳回首页,或点击此处跳转</a>
-							
+							<td style="padding-top:30px">
+								<span style="size: 400px;color: red">欢迎您：${user.username }</span>
 							</td>
 						</tr>
 					</table>

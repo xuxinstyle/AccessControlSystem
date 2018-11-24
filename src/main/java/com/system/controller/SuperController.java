@@ -1,6 +1,10 @@
 package com.system.controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,22 +31,21 @@ public class SuperController {
 	
 	@RequestMapping(value="/showUser")
 	public String ShowUser(Model model, Integer page) throws Exception{
-		System.out.println("进入showUser------------");
+		//System.out.println("进入showUser------------");
 		List<User> list = null;
 	        //页码对象
         PagingVO pagingVO = new PagingVO();
         //设置总页数
         pagingVO.setTotalCount(superService.getCountUser());
-        System.out.println("总数：superService.getCountUser()");
+       
         if (page == null || page == 0) {
             pagingVO.setToPageNo(1);
             list = superService.findByPaging(1);
-            System.out.println("list 1:"+list.get(0).getUsername());
         } else {
             pagingVO.setToPageNo(page);
 
             list = superService.findByPaging(page);
-            System.out.println("list:"+page);
+            //System.out.println("list:"+page);
         }
         
         model.addAttribute("UserList", list);
@@ -62,8 +65,14 @@ public class SuperController {
 	 */
 	@RequestMapping(value="/selectUser")
 	public String SelectUser(Model model, String username) throws Exception{
-		
+		if(username!=null){
+			Pattern p=Pattern.compile("\\s*|\t|\r|\n");
+			Matcher m=p.matcher(username);
+			username=m.replaceAll("");
+		}
+		//System.out.println("username："+username);
 		List<User> list = superService.findByName(username);
+		//System.out.println("list size:");
 		model.addAttribute("UserList", list);
 		
 		return "super/Usershow";
@@ -82,7 +91,7 @@ public class SuperController {
     public String addUser(User user, Model model) throws Exception {
 
         Boolean result = superService.save(user);
-        System.out.println(result);
+        //System.out.println(result);
         if (!result) {
             model.addAttribute("message", "用户名重复");
             return "error";
@@ -103,11 +112,21 @@ public class SuperController {
 
         return "redirect:/super/showUser";
     }
-	// 修改个人信息
-    @RequestMapping(value="/editUser")
+    // 修改个人信息页面显示
+    @RequestMapping(value="/editUser", method = {RequestMethod.GET})
+    private String editUserUI(Model model,HttpSession session) throws Exception{
+    	User user1=(User)session.getAttribute("user");
+    	//System.out.println("登录者："+user1.getUsername());
+    	User user = loginService.findByPrimaryKey(user1.getUsername());
+    	model.addAttribute("user", user);
+    	return "/super/editUser";
+    }
+    // 修改个人信息
+    @RequestMapping(value="/editUser", method = {RequestMethod.POST})
     private String editUser(User user) throws Exception{
     	
-    	loginService.updateByPrimaryKey(user);
+    	int i = loginService.updateByPrimaryKey(user);
+    	//System.out.println(i);
     	
     	return "redirect:/super/showUser";
     }
@@ -126,7 +145,7 @@ public class SuperController {
 		userFaceService.getFeatures(username);
 		User user = superService.findByPrimaryKey(username);
 		model.addAttribute("user", user);
-		return "success";
+		return "/super/success";
 		
 	}
 }

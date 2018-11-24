@@ -31,12 +31,12 @@ public class AdminController {
 	
 	@RequestMapping(value="/showUser")
 	public String ShowUser(Model model, Integer page,HttpSession session) throws Exception{
-		System.out.println("进入showUser------------");
+		//System.out.println("进入showUser------------");
 		List<User> list = null;
 	        //页码对象
         PagingVO pagingVO = new PagingVO();
         //设置总页数
-        System.out.println("总页数："+adminService.getCountUser());
+        //System.out.println("总页数："+adminService.getCountUser());
         pagingVO.setTotalCount(adminService.getCountUser());
         
         if (page == null || page == 0) {
@@ -46,10 +46,10 @@ public class AdminController {
             pagingVO.setToPageNo(page);
 
             list = adminService.findByPaging(page);
-            System.out.println(list);
+            //System.out.println(list);
         }
         User user=(User)session.getAttribute("user");
-        System.out.println("user:"+user.getUsername());
+        //System.out.println("user:"+user.getUsername());
         model.addAttribute("UserList", list);
         model.addAttribute("pagingVO", pagingVO);
         /**
@@ -85,7 +85,7 @@ public class AdminController {
      // 添加用户信息操作
     @RequestMapping(value = "/addUser", method = {RequestMethod.POST})
     public String addUser(User user, Model model) {
-    	System.out.println("进入addUser");
+    	//System.out.println("进入addUser");
         Boolean result;
 		try {
 			result = adminService.save(user);
@@ -103,8 +103,10 @@ public class AdminController {
     // 修改个人信息页面显示
     @RequestMapping(value="/editUser", method = {RequestMethod.GET})
     private String editUserUI(Model model,HttpSession session) throws Exception{
-    	User user=(User)session.getAttribute("user");
-    	System.out.println("登录者："+user.getUsername());
+    	
+    	User user1=(User)session.getAttribute("user");
+    	//System.out.println("登录者："+user1.getUsername());
+    	User user = loginService.findByPrimaryKey(user1.getUsername());
     	model.addAttribute("user", user);
     	return "/admin/editUser";
     }
@@ -113,7 +115,7 @@ public class AdminController {
     private String editUser(User user) throws Exception{
     	
     	int i = loginService.updateByPrimaryKey(user);
-    	System.out.println(i);
+    	//System.out.println(i);
     	
     	return "redirect:/admin/showUser";
     }
@@ -137,7 +139,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/faceEntry")
 	public String FaceEntry(Model model, String username) throws Exception{
-		System.out.println("开始录入：");
+		//System.out.println("开始录入：");
 		userFaceService.getFace(username);
 		userFaceService.getFeatures(username);
 		User user = adminService.findByPrimaryKey(username);

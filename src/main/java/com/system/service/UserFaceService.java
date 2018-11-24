@@ -1,9 +1,12 @@
 package com.system.service;
 
+import com.system.po.User;
+
 public interface UserFaceService {
 
-	void getFace(String id);
+	void getFace(String username);
 
-	void getFeatures(String id);
+	void getFeatures(String username);
 	
+	User CheckFace();
 }

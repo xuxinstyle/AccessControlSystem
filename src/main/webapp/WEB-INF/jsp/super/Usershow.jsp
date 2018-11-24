@@ -38,6 +38,7 @@
 								<span>添加用户信息</span>
 								
 							</button>
+							
 						</div>
 				    </div>
 				    <table class="table table-bordered">
