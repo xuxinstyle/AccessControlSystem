@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page language="java" import="java.util.* ,com.system.po.User,java.awt.*" errorPage="jsps/error.jsp" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
-
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,13 @@
 
 
 <body>
+	<%
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		User user=(User)request.getAttribute("user");
+		String dateStr = sdf.format(user.getLastopentime());
+		request.setAttribute("dateStr", dateStr);
+	%>
+	
 	<!-- 顶栏 -->
 	<jsp:include page="top.jsp"></jsp:include>
 	<!-- 中间主体 -->
@@ -72,12 +80,14 @@
 							    <c:if test='${user.opennum!=null}'>
 									<input style="display:none"   type="text" name="opennum" value="${user.opennum}"> 
 								</c:if>
+							
 							    <c:if test='${user.lastopentime!=null}'>
-									<input style="display:none"   type="datetime" name="lastopentime" value="${user.lastopentime}"> 
+									<input style="display:none" type="text" name="lastopentime" value="${dateStr }"/> 
 								</c:if>
 							    <c:if test='${user.csvpath!=null}'>
-									<input style="display:none"   type="text" name="csvpath" value="${user.csvpath}"> 
+									<input style="display:none"   type="text" name="csvpath" value="${user.csvpath}"/> 
 								</c:if>
+								
 								<div class="form-group" style="text-align: center">
 									<button class="btn btn-default" type="submit">提交</button>
 									<button class="btn btn-default" type="reset">重置</button>

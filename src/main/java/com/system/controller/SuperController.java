@@ -91,12 +91,13 @@ public class SuperController {
     public String addUser(User user, Model model) throws Exception {
 
         Boolean result = superService.save(user);
-        //System.out.println(result);
+       
         if (!result) {
             model.addAttribute("message", "用户名重复");
+            System.out.println("添加失败!");
             return "error";
         }
-
+        System.out.println("添加成功:"+result);
         //重定向
         return "redirect:/super/showUser";
     }
@@ -124,7 +125,7 @@ public class SuperController {
     // 修改个人信息
     @RequestMapping(value="/editUser", method = {RequestMethod.POST})
     private String editUser(User user) throws Exception{
-    	
+    	System.out.println(user.getLastopentime());
     	int i = loginService.updateByPrimaryKey(user);
     	//System.out.println(i);
     	
@@ -140,7 +141,9 @@ public class SuperController {
 	 */
 	@RequestMapping(value="/faceEntry")
 	public String FaceEntry(Model model, String username) throws Exception{
-		
+		System.out.println("转码前用户名："+username);
+		username=new String(username.getBytes("ISO-8859-1"),"UTF-8");
+		System.out.println("转码后用户名："+username);
 		userFaceService.getFace(username);
 		userFaceService.getFeatures(username);
 		User user = superService.findByPrimaryKey(username);

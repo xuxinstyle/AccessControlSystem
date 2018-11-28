@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import dlib  # 人脸识别的库dlib
 import numpy as np  # 数据处理的库numpy
 import cv2  # 图像处理的库OpenCv
@@ -5,14 +6,17 @@ import csv
 import os
 import pandas as pd
 import sys
+import codecs
+from datashape import unicode
+
 # face recognition model, the object maps human faces into 128D vectors
 
 facerec = dlib.face_recognition_model_v1(sys.argv[2]+"dlib_face_recognition_resnet_model_v1.dat")
-
 #遍历csvs文件夹下的所有文件
 #rootdir="I:/csvs/00001_admin/"
 #rootdir="I:\\AccessControlSystem\\src\\main\\webapp\\csvs\\"
 rootdir=sys.argv[1]
+rootdir = rootdir.encode("utf-8").decode("gbk")
 list=os.listdir(rootdir)
 features_mean_default_person=os.listdir(rootdir)
 
@@ -35,7 +39,6 @@ def return_euclidean_distance(feature_1, feature_2):
 # dlib预测器
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(sys.argv[2]+'shape_predictor_68_face_landmarks.dat')
-
 # 创建cv2摄像头对象
 cap = cv2.VideoCapture(0)
 

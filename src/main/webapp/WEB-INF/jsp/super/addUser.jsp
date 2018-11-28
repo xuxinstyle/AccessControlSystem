@@ -58,6 +58,13 @@
 							      <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
 								  
 							    </div>
+							    <%--  <div id="contentHolder">
+								    <video id="video" width="320" height="320" autoplay></video>
+								    <input type="button" id="picture" style="display:block" value="拍照"></input>
+								    <canvas style="display:block" id="canvas" width="320" height="320"></canvas>
+								    <input type="button" id="sc" style="display:block" value="上传"></input>
+								</div> --%>
+
 							  </div>
 							 
 							  <div class="form-group" style="text-align: center">
@@ -91,4 +98,40 @@
 	        {alert("两次密码不正确");return false;}
 	    }
 	</script>
+	<!-- <script>
+    navigator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia;
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({ audio: true, video: { width: 320, height: 320 } },
+                function(stream) {
+                    var video = document.getElementById("video");
+                    video.src = window.URL.createObjectURL(stream);
+                    video.onloadedmetadata = function(e) {
+                        console.log('nihao44eee4aaaaddda');
+                        video.play();
+                    };
+                },
+                function(err) {
+                    console.log("The following error occurred: " + err.name);
+                }
+        );
+    } else {
+        console.log("getUserMedia not supported");
+    }
+  
+   
+    document.getElementById("picture").addEventListener("click", function () {
+    	  debugger;
+    	 var context = document.getElementById("canvas").getContext("2d");
+        context.drawImage(video, 0, 0, 320, 320);
+    });
+    document.getElementById("sc").addEventListener("click", function () {
+        var imgData=document.getElementById("canvas").toDataURL("image/png");
+        var data=imgData.substr(22);
+        debugger;
+        console.log(data);
+        $.post('../upload/sc',{'sj':data});
+    });
+</script> -->
 </html>

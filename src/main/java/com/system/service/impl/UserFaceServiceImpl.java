@@ -35,7 +35,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 			File directory = new File("");// 参数为空
 	        String courseFile;
 			courseFile = directory.getCanonicalPath();
-			System.out.println(courseFile);
+			//System.out.println(courseFile);
 			User user = loginMapper.selectByPrimaryKey(username);
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
@@ -45,10 +45,11 @@ public class UserFaceServiceImpl implements UserFaceService {
 			String DatRecourse_path=root_path+"py\\";
 			String path_save = root_path+"images\\"+user.getUsername()+"\\";
 			String[] args = new String[]{"python",cmdStr_windows,path_save,DatRecourse_path};
-			/*for (int i = 0; i < args.length; i++) {
+			System.out.println("eclipse中：");
+			for (int i = 0; i < args.length; i++) {
 				String string = args[i];
 				System.out.println(string);
-			}*/
+			}
 			// 定义缓冲区、正常结果输出流、错误信息输出流 
 			byte[] buffer = new byte[1024]; 
 			ByteArrayOutputStream outStream = new ByteArrayOutputStream(); 
@@ -93,7 +94,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 		try {
 			File directory = new File("");// 参数为空
 			String courseFile = directory.getCanonicalPath();
-			System.out.println(courseFile);
+			//System.out.println(courseFile);
 			
 			User user = loginMapper.selectByPrimaryKey(id);
 			// 若Python脚本在windows主机中 
@@ -105,10 +106,11 @@ public class UserFaceServiceImpl implements UserFaceService {
 			String path_image=root_path+"images\\"+user.getUsername()+"\\";
 			String path_cvs = root_path+"csvs\\"+user.getUsername()+"\\";
 			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path,path_image};
-			/*for (int i = 0; i < args.length; i++) {
+			System.out.println("eclipse中：");
+			for (int i = 0; i < args.length; i++) {
 				String string = args[i];
 				System.out.println(string);
-			}*/
+			}
 			// 定义缓冲区、正常结果输出流、错误信息输出流 
 			byte[] buffer = new byte[1024]; 
 			ByteArrayOutputStream outStream = new ByteArrayOutputStream(); 

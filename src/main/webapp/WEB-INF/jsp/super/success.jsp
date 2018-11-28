@@ -26,18 +26,16 @@
 </head>
 <body>
    
-	<div id="divcontent">
-		<table width="850px" border="0" cellspacing="0">
+	<div align="center" id="divcontent" >
+		<table  width="850px" border="0" cellspacing="0">
 			<tr>
-				<td style="padding:30px; text-align:center"><table width="60%"
-						border="0" cellspacing="0" style="margin-top:70px">
+				<td style="padding:30px; text-align:center">
+					<table width="60%" border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
-							
-							<td style="padding-top:30px"><font
-								style="font-weight:bold; color:#FF0000">人脸信息录入成功</font><br />
+							<td style="padding-top:30px" style="width: 30%;>
+							<font style="font-weight:bold; color:#FF0000">恭喜您：${user.username },人脸信息录入成功</font><br /><br /> 
 									
-								<br /> <a href="${pageContext.request.contextPath}/super/showUser"><span id="second">5</span>秒后自动为您转跳回首页,或点击此处跳转</a>
-							
+								<a href="${pageContext.request.contextPath}/super/showUser"><span id="second">3</span>秒后自动为您转跳回首页,或点击此处跳转</a>
 							</td>
 						</tr>
 					</table>

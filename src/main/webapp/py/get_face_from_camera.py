@@ -1,12 +1,13 @@
+# -*- coding: UTF-8 -*-
 import dlib  # 人脸识别的库dlib
 import numpy as np  # 数据处理的库numpy
 import cv2  # 图像处理的库OpenCv
 import sys
 import os
+import codecs
 # dlib预测器
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(sys.argv[2]+'shape_predictor_68_face_landmarks.dat')
-
 # 创建cv2摄像头对象
 cap = cv2.VideoCapture(0)
 
@@ -22,7 +23,8 @@ cnt_p = 0
 
 # 保存
 path_save = sys.argv[1]
-
+path_save =path_save.encode("utf-8").decode("gbk")
+print(path_save)
 # cap.isOpened（） 返回true/false 检查初始化是否成功
 while cap.isOpened():
 

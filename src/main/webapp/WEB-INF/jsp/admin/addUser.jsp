@@ -33,7 +33,7 @@
 							  <div class="form-group">
 								  <label for="inputPassword3" class="col-sm-2 control-label">用户名</label>
 								  <div class="col-sm-10">
-								    <input type="text" class="form-control" id="inputusername" name="username" placeholder="请输入用户名"
+								    <input type="text" class="form-control" id="inputusername" name="username" placeholder="请输入用户名"/>
 									  
 								  </div>
 								  
@@ -41,22 +41,33 @@
 							      <label for="inputPassword3" class="col-sm-2 control-label">用户权限</label>
 							      <div class="col-sm-10">
 									<label class="checkbox-inline">
-										<input type="radio" name="rolename" value="user" checked>用户
+										<input type="radio" name="rolename" value="user" checked/>用户
 									</label>
 							      </div>
 								 
 								  
 								  <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
 								  <div class="col-sm-10">
-								    <input type="text" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"
+								    <input type="text" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"/>
 									  
 								  </div>
 
 								  <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
 								  <div class="col-sm-10">
-								   	 <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"
+								   	 <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
 								  </div>
-								 
+								  <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
+							   	 <div id="contentHolder">
+								    <video id="video" width="320" height="320" autoplay></video>
+								    <input type="button" id="picture" style="display:block" >拍照</input>
+								    <canvas style="display:block" id="canvas" width="320" height="320"></canvas>
+								    <input id="sc" style="display:block" >上传</input>
+								</div>
+							    <div class="col-sm-10">
+							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
+							   		<button onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
+							     
+							    </div>
 								  <div class="form-group" style="text-align: center">
 									<button class="btn btn-default" type="submit">提交</button>
 									<button class="btn btn-default" >重置</button>

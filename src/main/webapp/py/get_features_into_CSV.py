@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # return_128d_features() 获取某张图像的128d特征
 # write_into_csv() 将某个文件夹中的图像读取特征兵写入csv
 # compute_the_mean() 从csv中读取128d特征，并计算特征均值
@@ -11,6 +12,9 @@ import csv
 import numpy as np
 import pandas as pd
 import sys
+import codecs
+from datashape import unicode
+
 currrent_path = os.getcwd()
 shape_predictor_68_face_landmarks = sys.argv[2]+"shape_predictor_68_face_landmarks.dat"
 dlib_face_recognition_resnet_model_v1 = sys.argv[2]+"dlib_face_recognition_resnet_model_v1.dat"
@@ -27,6 +31,10 @@ predictor = dlib.shape_predictor(shape_predictor_68_face_landmarks)
 facerec = dlib.face_recognition_model_v1(dlib_face_recognition_resnet_model_v1)
 path_pics = sys.argv[3]
 path_csv = sys.argv[1] #"I:/csvs/00001_admin/"
+
+path_csv = path_csv.encode("utf-8").decode("gbk")
+path_pics = path_pics.encode("utf-8").decode("gbk")
+
 print(path_csv)
 print(path_pics)
 # 返回单张图像的128D特征

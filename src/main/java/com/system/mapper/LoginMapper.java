@@ -10,4 +10,6 @@ public interface LoginMapper {
     User selectByPrimaryKey(String username);
     
     int updateByPrimaryKey(User user);
+    
+    
 }

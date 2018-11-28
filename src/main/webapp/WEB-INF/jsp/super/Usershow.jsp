@@ -69,7 +69,7 @@
 										</c:choose>
 									</td>
 									<td>${item.opennum}</td>
-									<td>${item.lastopentime}</td>
+									<td><fmt:formatDate value="${item.lastopentime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 									<td>
 									<c:choose>
 										<c:when test="${item.csvpath != NULL}">

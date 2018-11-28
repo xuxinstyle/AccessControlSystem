@@ -62,6 +62,7 @@
 							    <div class="col-sm-10">
 							      <input type="text" class="form-control" id="inputEmail3" name="password2" placeholder="请输入密码" value="">
 							    </div>
+							    
 							    <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
 							    <div class="col-sm-10">
 							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
