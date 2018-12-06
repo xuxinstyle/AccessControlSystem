@@ -19,6 +19,7 @@ I:\AccessControlSystem\src\main\java\com\system\controller\AdminController.java
 I:\AccessControlSystem\src\main\java\com\system\mapper\AdminMapper.java
 I:\AccessControlSystem\src\main\java\com\system\mapper\UserPageMapper.java
 I:\AccessControlSystem\src\main\java\com\system\mapper\SuperMapper.java
+I:\AccessControlSystem\src\main\java\com\system\controller\UploadController.java
 I:\AccessControlSystem\src\main\java\com\system\mapper\SuperPageMapper.java
 I:\AccessControlSystem\src\main\java\com\system\service\LoginService.java
 I:\AccessControlSystem\src\main\java\com\system\service\AdminService.java

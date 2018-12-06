@@ -15,12 +15,24 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<style>
+	body {
+		background: #ebebeb;
+		font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei",
+			"\9ED1\4F53", Arial, sans-serif;
+		color: #222;
+		background: url("${pageContext.request.contextPath}/images/showbg1.jpg")repeat;
+		/* font-size: 12px; */
+	}
+	</style>
 </head>
 <body>
 	<!-- 顶栏 -->
 	<jsp:include page="top.jsp"></jsp:include>
 	<!-- 中间主体 -->
-	<div class="container" id="content">
+	<!-- style="background:#C8EFFE; color:#C8EFFE" -->
+	<div  class="container" id="content">
 		<div class="row">
 		
 			<div class="col-md-10">

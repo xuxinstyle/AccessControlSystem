@@ -13,10 +13,10 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!--静态资源解析包括 ：js、css、img、.. -->
-	<!-- <mvc:resources mapping="/js/" location="/js/**" />
+	<mvc:resources mapping="/js/" location="/js/**" />
 	<mvc:resources mapping="/css/" location="/css/**" />
 	<mvc:resources mapping="/fonts/" location="/fonts/**" />
-	<mvc:resources mapping="/images/" location="/images/**"/>  -->
+	<mvc:resources mapping="/images/" location="/images/**"/> 
 	<!--加载静态资源 -->
 	<mvc:default-servlet-handler />
 
@@ -53,6 +53,15 @@
 	<property name="securityManager" ref="securityManager"></property>
 		
 	</bean>
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/html;charset=UTF-8"></property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
 	<!--视图解析器 -->
 	<!-- 需要配置解析jsp的视图解析器 jsp解析，默认使用jstl标签解析 -->
 	<bean

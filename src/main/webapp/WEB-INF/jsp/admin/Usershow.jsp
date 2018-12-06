@@ -15,6 +15,17 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style>
+	body {
+		background: #ebebeb;
+		font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei",
+			"\9ED1\4F53", Arial, sans-serif;
+		color: #222;
+		font-size: 12px;
+	}
+	div{
+	}
+	</style>
 </head>
 <body>
 	<!-- 顶栏 -->

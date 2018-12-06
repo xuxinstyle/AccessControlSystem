@@ -158,12 +158,15 @@ public class UserFaceServiceImpl implements UserFaceService {
 			
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
-			
+			//python文件face_reco_from_camera位置
 			String cmdStr_windows = root_path+"py\\face_reco_from_camera.py"; 
-			
-			String DatRecourse_path=root_path+"py\\";
+			//csvs文件的存放位置
 			String path_cvs = root_path+"csvs\\";
-			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path};
+			//dlib资源文件的目录
+			String DatRecourse_path=root_path+"py\\";
+			//当前需要识别的照片的目录
+			String current=root_path+"images\\current\\current.jpg";
+			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path,current};
 			/*for (int i = 0; i < args.length; i++) {
 				String string = args[i];
 				System.out.println(string);

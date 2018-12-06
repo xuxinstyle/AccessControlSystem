@@ -68,8 +68,8 @@ public class LoginController {
     }
     
     @RequestMapping(value="/facelogin")
-    public String faceLogin(Model model,HttpSession session) throws Exception{
-    	//System.out.println("正在识别人脸---------");
+    public String faceLogin(Model model) throws Exception{
+    	System.out.println("正在识别人脸---------");
     	User user = userFaceService.CheckFace();
     	System.out.println("username:"+user.getUsername());
         //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常

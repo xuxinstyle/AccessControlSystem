@@ -23,6 +23,16 @@
 			}
 		}
 	</script> 
+	<style>
+	body {
+		background: #ebebeb;
+		font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei",
+			"\9ED1\4F53", Arial, sans-serif;
+		color: #222;
+		background: url("${pageContext.request.contextPath}/images/showbg1.jpg")repeat;
+		/* font-size: 12px; */
+	}
+	</style>
 </head>
 <body>
    
