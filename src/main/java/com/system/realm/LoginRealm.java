@@ -73,16 +73,19 @@ public class LoginRealm extends AuthorizingRealm{
 
         User user = null;
         try {
+        	//System.out.println("查询用户");
             user = loginService.findByPrimaryKey(username);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         if (user == null) {
+        	//System.out.println("没有该用户名！");
             //没有该用户名
             throw new UnknownAccountException();
         } else if (!password.equals(user.getPassword())) {
             //密码错误
+        	//System.out.println("密码错误！");
             throw new IncorrectCredentialsException();
         }
 

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--加入导航条标题-->
-            <div class="navbar navbar-default" role="navigation">
+            <div class="" role="navigation">
                 　<div class="navbar-header">
                 　    <a href="${pageContext.request.contextPath}/super/showUser" class="navbar-brand">基于人脸识别的门禁信息管理系统(超级管理员)</a>
                 　</div>

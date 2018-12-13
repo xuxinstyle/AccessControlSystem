@@ -21,9 +21,8 @@
 		font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei",
 			"\9ED1\4F53", Arial, sans-serif;
 		color: #222;
-		font-size: 12px;
-	}
-	div{
+		background: url("${pageContext.request.contextPath}/images/showbg1.jpg")repeat;
+		/* font-size: 12px; */
 	}
 	</style>
 </head>
@@ -34,8 +33,8 @@
 	<div class="container" id="content">
 		<div class="row">
 		
-			<div class="col-md-10">
-				<div class="panel panel-default">
+			<div class="">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 class="col-md-5">用户列表</h1>
@@ -45,7 +44,7 @@
 									<span class="input-group-addon btn" onclick="document.getElementById('form1').submit" id="sub">搜索</span>
 								</div>
 							</form>
-							<button class="add_button" style="margin-top: 20px" onClick="location.href='${pageContext.request.contextPath}/admin/addUser'">
+							<button class="add_button" style="margin-top: 20px;height:32px" onClick="location.href='${pageContext.request.contextPath}/admin/addUser'">
 								<span>添加用户信息</span>
 								
 							</button>
@@ -101,7 +100,7 @@
 							</c:forEach>
 					        </tbody>
 				    </table>
-				    <div class="panel-footer">
+				    <div class="">
 						<c:if test="${pagingVO != null}">
 							<nav style="text-align: center">
 								<ul class="pagination">

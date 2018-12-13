@@ -117,7 +117,7 @@ public class SuperController {
     @RequestMapping(value="/editUser", method = {RequestMethod.GET})
     private String editUserUI(Model model,HttpSession session) throws Exception{
     	User user1=(User)session.getAttribute("user");
-    	//System.out.println("登录者："+user1.getUsername());
+    	System.out.println("登录者："+user1.getUsername());
     	User user = loginService.findByPrimaryKey(user1.getUsername());
     	model.addAttribute("user", user);
     	return "/super/editUser";

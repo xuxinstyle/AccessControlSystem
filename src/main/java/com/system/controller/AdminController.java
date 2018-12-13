@@ -100,12 +100,12 @@ public class AdminController {
 		}
 
     }
-    // 修改个人信息页面显示
+ // 修改个人信息页面显示
     @RequestMapping(value="/editUser", method = {RequestMethod.GET})
     private String editUserUI(Model model,HttpSession session) throws Exception{
     	
     	User user1=(User)session.getAttribute("user");
-    	//System.out.println("登录者："+user1.getUsername());
+    	System.out.println("登录者："+user1.getUsername());
     	User user = loginService.findByPrimaryKey(user1.getUsername());
     	model.addAttribute("user", user);
     	return "/admin/editUser";
@@ -113,7 +113,7 @@ public class AdminController {
     // 修改个人信息
     @RequestMapping(value="/editUser", method = {RequestMethod.POST})
     private String editUser(User user) throws Exception{
-    	
+    	System.out.println("--");
     	int i = loginService.updateByPrimaryKey(user);
     	//System.out.println(i);
     	

@@ -31,8 +31,8 @@
 		<div class="container" id="content">
 		<div class="row">
 		
-			<div class="col-md-10">
-				<div class="panel panel-default">
+			<div class="col-sm-10">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 style="text-align: center;">添加用户信息</h1>
@@ -67,18 +67,17 @@
 								  <div class="col-sm-10">
 								   	 <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
 								  </div>
-								  <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
-							   	 <div id="contentHolder">
+								  <!-- <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label> -->
+							   	<%--   <div id="contentHolder">
 								    <video id="video" width="320" height="320" autoplay></video>
 								    <input type="button" id="picture" style="display:block" >拍照</input>
 								    <canvas style="display:block" id="canvas" width="320" height="320"></canvas>
-								    <input id="sc" style="display:block" >上传</input>
-								</div>
-							    <div class="col-sm-10">
+								    <input id="sc" style="display:block" >上传</input></div> --%>
+							    <%-- <div class="col-sm-10">
 							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
 							   		<button onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
 							     
-							    </div>
+							    </div> --%>
 								  <div class="form-group" style="text-align: center">
 									<button class="btn btn-default" type="submit">提交</button>
 									<button class="btn btn-default" >重置</button>

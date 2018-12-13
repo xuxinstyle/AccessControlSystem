@@ -10,3 +10,16 @@
 0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:22:58 +0800] "GET /static/images/right_hand.png HTTP/1.1" 200 1370 http-bio-8081-exec-9 5
 0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:22:59 +0800] "POST /login HTTP/1.1" 302 - http-bio-8081-exec-8 331
 0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:22:59 +0800] "GET /super/showUser HTTP/1.1" 200 12811 http-bio-8081-exec-8 831
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:31:46 +0800] "GET /super/addUser HTTP/1.1" 200 6776 http-bio-8081-exec-4 139
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:31:51 +0800] "GET /super/editUser HTTP/1.1" 200 6264 http-bio-8081-exec-4 204
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:31:57 +0800] "GET /super/addUser HTTP/1.1" 200 6776 http-bio-8081-exec-4 8
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:31:59 +0800] "POST /super/selectUser HTTP/1.1" 200 4665 http-bio-8081-exec-4 40
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:32:05 +0800] "POST /super/selectUser HTTP/1.1" 200 12031 http-bio-8081-exec-4 20
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:47:07 +0800] "GET /super/selectUser HTTP/1.1" 302 - http-bio-8081-exec-1 2125
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:47:07 +0800] "GET /index.jsp HTTP/1.1" 200 4208 http-bio-8081-exec-3 58
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:47:14 +0800] "GET /login HTTP/1.1" 200 5750 http-bio-8081-exec-4 71
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:47:20 +0800] "POST /login HTTP/1.1" 404 993 http-bio-8081-exec-6 556
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:47:30 +0800] "POST /login HTTP/1.1" 404 993 http-bio-8081-exec-7 9
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:48:22 +0800] "POST /login HTTP/1.1" 302 - http-bio-8081-exec-9 44
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:48:22 +0800] "GET /super/showUser HTTP/1.1" 200 12811 http-bio-8081-exec-9 84
+0:0:0:0:0:0:0:1 - - [06/Dec/2018:21:48:26 +0800] "GET /super/editUser HTTP/1.1" 200 6264 http-bio-8081-exec-9 30

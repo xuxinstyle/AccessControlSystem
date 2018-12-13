@@ -33,6 +33,7 @@
 		User user=(User)request.getAttribute("user");
 		String dateStr = sdf.format(user.getLastopentime());
 		request.setAttribute("dateStr", dateStr);
+		
 	%>
 	
 	<!-- 顶栏 -->
@@ -42,7 +43,7 @@
 		<div class="row">
 			
 			<div class="col-md-10">
-				<div class="panel panel-default">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 style="text-align: center;">修改个人信息</h1>
@@ -92,7 +93,7 @@
 								</c:if>
 							
 							    <c:if test='${user.lastopentime!=null}'>
-									<input style="display:none" type="text" name="lastopentime" value="${dateStr }"/> 
+									<input style="display:none" type="datetime" name="lastopentime" value="${user.lastopentime }"/> 
 								</c:if>
 							    <c:if test='${user.csvpath!=null}'>
 									<input style="display:none"   type="text" name="csvpath" value="${user.csvpath}"/> 

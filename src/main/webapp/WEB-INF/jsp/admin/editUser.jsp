@@ -34,7 +34,7 @@
 		<div class="row">
 			
 			<div class="col-md-10">
-				<div class="panel panel-default">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 style="text-align: center;">修改个人信息</h1>
@@ -74,9 +74,9 @@
 							    </div>
 							    
 							    <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
-							    <div class="col-sm-10">
+							    <div class=""  >
 							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
-							   		<input type="button" onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
+							   		<input type="button" style="margin-left:15px;height:32px;" onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
 							     
 							    </div>
 							    

@@ -35,8 +35,8 @@
 	<div  class="container" id="content">
 		<div class="row">
 		
-			<div class="col-md-10">
-				<div class="panel panel-default">
+			<div class="">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 class="col-md-5">用户列表</h1>
@@ -46,7 +46,7 @@
 									<span class="input-group-addon btn" onclick="document.getElementById('form1').submit" id="sub">搜索</span>
 								</div>
 							</form>
-							<button class="add_button" style="margin-top: 20px" onClick="location.href='${pageContext.request.contextPath}/super/addUser'">
+							<button class="add_button" style="height:33px;margin-top: 20px" onClick="location.href='${pageContext.request.contextPath}/super/addUser'">
 								<span>添加用户信息</span>
 								
 							</button>
@@ -102,7 +102,7 @@
 							</c:forEach>
 					        </tbody>
 				    </table>
-				    <div class="panel-footer">
+				    <div class="">
 						<c:if test="${pagingVO != null}">
 							<nav style="text-align: center">
 								<ul class="pagination">

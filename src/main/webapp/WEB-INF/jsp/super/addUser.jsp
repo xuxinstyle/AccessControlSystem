@@ -31,7 +31,7 @@
 		<div class="row">
 		
 			<div class="col-md-10">
-				<div class="panel panel-default">
+				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
 					    	<h1 style="text-align: center;">添加用户信息</h1>
