@@ -8,5 +8,9 @@ import com.system.po.User;
 public interface SuperPageMapper {
 
 	List<User> findByPaging(PagingVO pagingVO);
+
+	List<User> findByPagingadmin(PagingVO pagingVO);
+
+	List<User> findByPagingUser(PagingVO pagingVO);
 	
 }

@@ -9,9 +9,11 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.stereotype.Service;
 
+import com.system.controller.SuperController;
 import com.system.mapper.LoginMapper;
 import com.system.po.User;
 import com.system.service.UserFaceService;
@@ -22,15 +24,13 @@ import com.system.service.UserFaceService;
  */
 @Service
 public class UserFaceServiceImpl implements UserFaceService {
-
+	private static Logger logger = Logger.getLogger(UserFaceServiceImpl.class);
 	@Resource
 	private LoginMapper loginMapper;
 	/**
 	 * 调用摄像头保存照片到相应目录下
 	 */
 	public void getFace(String username) {
-		// TODO Auto-generated method stub
-		
 		try {
 			File directory = new File("");// 参数为空
 	        String courseFile;
@@ -39,16 +39,15 @@ public class UserFaceServiceImpl implements UserFaceService {
 			User user = loginMapper.selectByPrimaryKey(username);
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
-			
 			String cmdStr_windows = root_path+"py\\get_face_from_camera.py"; 
-			
 			String DatRecourse_path=root_path+"py\\";
 			String path_save = root_path+"images\\"+user.getUsername()+"\\";
 			String[] args = new String[]{"python",cmdStr_windows,path_save,DatRecourse_path};
 			System.out.println("eclipse中：");
 			for (int i = 0; i < args.length; i++) {
 				String string = args[i];
-				System.out.println(string);
+				logger.info("python打印信息："+string);
+				//System.out.println(string);
 			}
 			// 定义缓冲区、正常结果输出流、错误信息输出流 
 			byte[] buffer = new byte[1024]; 
@@ -105,11 +104,12 @@ public class UserFaceServiceImpl implements UserFaceService {
 			String DatRecourse_path=root_path+"py\\";
 			String path_image=root_path+"images\\"+user.getUsername()+"\\";
 			String path_cvs = root_path+"csvs\\"+user.getUsername()+"\\";
-			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path,path_image};
-			System.out.println("eclipse中：");
+			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path,path_image,user.getUsername()};
+			//System.out.println("eclipse中：");
 			for (int i = 0; i < args.length; i++) {
 				String string = args[i];
-				System.out.println(string);
+				logger.info("eclipse中："+string);
+				//System.out.println(string);
 			}
 			// 定义缓冲区、正常结果输出流、错误信息输出流 
 			byte[] buffer = new byte[1024]; 
@@ -130,12 +130,15 @@ public class UserFaceServiceImpl implements UserFaceService {
 			if(flag==0){
 				user.setCsvpath(path_cvs);
 				loginMapper.updateByPrimaryKey(user);
-				System.out.println("录入成功");
+				logger.info(user.getUsername()+" 录入成功！");
+				//System.out.println("录入成功");
 			}
 			proc.waitFor();// 等待命令执行完成 
 			// 打印流信息 
-			System.out.println(outStream.toString()); 
-			System.out.println(outerrStream.toString()); 
+			logger.info(outStream.toString());
+			logger.error(outerrStream.toString());
+			//System.out.println(outStream.toString()); 
+			//System.out.println(outerrStream.toString()); 
 			// 将接收的输出结果转换为目标类型 
 			//Integer.parseInt(outStream.toString()); 
 		} catch (IOException e1) {
@@ -150,11 +153,10 @@ public class UserFaceServiceImpl implements UserFaceService {
 	
 	@Override
 	public User CheckFace() {
-		//System.out.println("开始识别人脸---");
+		
 		try {
 			File directory = new File("");// 参数为空
 			String courseFile = directory.getCanonicalPath();
-			//System.out.println(courseFile);
 			
 			// 若Python脚本在windows主机中 
 			String root_path=courseFile+"\\src\\main\\webapp\\";
@@ -164,9 +166,8 @@ public class UserFaceServiceImpl implements UserFaceService {
 			String path_cvs = root_path+"csvs\\";
 			//dlib资源文件的目录
 			String DatRecourse_path=root_path+"py\\";
-			//当前需要识别的照片的目录
-			String current=root_path+"images\\current\\current.jpg";
-			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path,current};
+			
+			String[] args = new String[]{"python",cmdStr_windows,path_cvs,DatRecourse_path};
 			/*for (int i = 0; i < args.length; i++) {
 				String string = args[i];
 				System.out.println(string);
@@ -177,6 +178,7 @@ public class UserFaceServiceImpl implements UserFaceService {
 			ByteArrayOutputStream outerrStream = new ByteArrayOutputStream(); 
 			
 			Process proc=Runtime.getRuntime().exec(args); 
+			
 			InputStream errStream = proc.getErrorStream(); 
 			InputStream stream = proc.getInputStream(); // 流读取与写入 
 			int len = -1; 
@@ -184,24 +186,29 @@ public class UserFaceServiceImpl implements UserFaceService {
 			while ((len = errStream.read(buffer)) != -1) { 
 				outerrStream.write(buffer, 0, len); 
 				flag=1;
-			} while ((len = stream.read(buffer)) != -1) { 
+			} 
+			while ((len = stream.read(buffer)) != -1) { 
 				outStream.write(buffer, 0, len); 
 			} 
 			if(flag==0){
-				System.out.println("识别成功,开门");
+				logger.info("识别成功，开门"); 
+				//System.out.println("识别成功,开门");
 			}
 			proc.waitFor();// 等待命令执行完成 
-			// 打印流信息 
-			System.out.println(outStream.toString()); 
-			System.out.println(outerrStream.toString()); 
+			proc.destroy();
+			logger.info(outStream.toString());
+			logger.error(outerrStream.toString());
+			//System.out.println(outStream.toString()); 
+			//System.out.println(outerrStream.toString()); 
 			// 将接收的输出结果转换为目标类型 
 			String username=outStream.toString();
-			//System.out.println("outStream:"+username);
+			//System.out.println("outStream:username="+username);
 			if(username!=null){
 				Pattern p=Pattern.compile("\\s*|\t|\r|\n");
 				Matcher m=p.matcher(username);
 				username=m.replaceAll("");
 			}
+			//System.out.println("username:"+username);
 			User user = loginMapper.selectByPrimaryKey(username);
 			//System.out.println("loginMapper:"+user.getUsername());
 			return user;

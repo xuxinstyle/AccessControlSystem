@@ -89,17 +89,17 @@
    <select id="findByFuzzyName" parameterType="java.lang.String" resultType="com.system.po.User">
   	select *
   	from user
-  	where username like '%${value}%' and roleName!='superadmin' and roleName='admin'
+  	where username like '%${value}%' and roleName='user'
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where UserName = #{username,jdbcType=VARCHAR} and roleName!='superadmin' and roleName='admin'
+    where UserName = #{username,jdbcType=VARCHAR} and roleName='user'
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
-    where UserName = #{username,jdbcType=VARCHAR} and roleName!='superadmin' and roleName='admin'
+    where UserName = #{username,jdbcType=VARCHAR} and roleName='user'
   </delete>
   <delete id="deleteByExample" parameterType="com.system.po.UserExample" >
     delete from user
@@ -107,7 +107,7 @@
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    where roleName!='superadmin' and roleName='admin'
+    where and roleName='user'
   </delete>
   <insert id="insert" parameterType="com.system.po.User" >
     insert into user (UserName, PassWord, OpenNum, 
@@ -168,7 +168,7 @@
   </insert>
   <select id="countByExample" parameterType="com.system.po.UserExample" resultType="java.lang.Integer" >
     select count(*) from user
-    where roleName!='superadmin' and roleName!='admin'
+    where roleName='user'
     <!-- <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if> -->

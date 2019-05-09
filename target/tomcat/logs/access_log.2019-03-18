@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:18 +0800] "GET / HTTP/1.1" 302 - http-bio-8081-exec-1 334
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:19 +0800] "GET /login.jsp;jsessionid=D7DB87A60BBDE47565CA455A1D653D9A HTTP/1.1" 200 5723 http-bio-8081-exec-3 112
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:21 +0800] "GET /favicon.ico HTTP/1.1" 302 - http-bio-8081-exec-4 2594
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:21 +0800] "GET /login.jsp HTTP/1.1" 200 5723 http-bio-8081-exec-5 3
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:36 +0800] "POST /login HTTP/1.1" 302 - http-bio-8081-exec-6 553
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:36 +0800] "GET /super/showadmin HTTP/1.1" 200 8320 http-bio-8081-exec-8 150
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:52:36 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8081-exec-9 13
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:53:14 +0800] "GET /super/showVisit HTTP/1.1" 200 6199 http-bio-8081-exec-10 61
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:53:34 +0800] "GET /super/showadmin HTTP/1.1" 200 8320 http-bio-8081-exec-3 16
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:53:36 +0800] "GET /super/showUser HTTP/1.1" 200 6834 http-bio-8081-exec-5 70
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:53:50 +0800] "GET /super/userPasswordRest HTTP/1.1" 200 5815 http-bio-8081-exec-5 36
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:54:04 +0800] "GET /super/editUser HTTP/1.1" 200 6999 http-bio-8081-exec-5 41
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:54:22 +0800] "GET / HTTP/1.1" 200 5731 http-bio-8081-exec-5 7
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:54:23 +0800] "GET /index HTTP/1.1" 200 4214 http-bio-8081-exec-5 53
+0:0:0:0:0:0:0:1 - - [18/Mar/2019:23:55:37 +0800] "GET /super/showVisit HTTP/1.1" 200 6199 http-bio-8081-exec-4 18

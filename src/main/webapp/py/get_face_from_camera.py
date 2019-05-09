@@ -8,7 +8,10 @@ import codecs
 # dlib预测器
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(sys.argv[2]+'shape_predictor_68_face_landmarks.dat')
+#predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+
 # 创建cv2摄像头对象
+
 cap = cv2.VideoCapture(0)
 
 # cap.set(propId, value)
@@ -20,11 +23,16 @@ cnt_ss = 0
 
 # 人脸截图的计数器
 cnt_p = 0
-
+currrent_path = os.getcwd()
 # 保存
 path_save = sys.argv[1]
-path_save =path_save.encode("utf-8").decode("gbk")
+#path_save=currrent_path
+#path_save =path_save.encode("utf-8").decode("gbk")
 print(path_save)
+isexist = os.path.exists(path_save)
+if not isexist:
+    print("file is not exists")
+    os.makedirs(path_save)
 # cap.isOpened（） 返回true/false 检查初始化是否成功
 while cap.isOpened():
 
@@ -76,17 +84,17 @@ while cap.isOpened():
             for ii in range(height):
                 for jj in range(width):
                     im_blank[ii][jj] = im_rd[d.top() + ii][d.left() + jj]
-            print(path_save + "img_face_" + str(cnt_p) + ".jpg")
+            print(path_save + "\\img_face_" + str(cnt_p) + ".jpg")
             isexist = os.path.exists(path_save)
-            if not isexist:
+            if (not isexist):
                 print("文件夹不存在需要创建")
                 os.makedirs(path_save)
                 print("文件夹创建成功")
-                cv2.imwrite(path_save + "img_face_" + str(cnt_p) + ".jpg", im_blank)
+                cv2.imwrite(path_save + "\\img_face_" + str(cnt_p) + ".jpg", im_blank)
                 cv2.putText(im_rd, "faces: " + str(len(rects)), (20, 50), font, 1, (0, 0, 255), 1, cv2.LINE_AA)
             else:
                 print("文件夹存在")
-                cv2.imwrite(path_save + "img_face_" + str(cnt_p) + ".jpg",im_blank)
+                cv2.imwrite(path_save + "\\img_face_" + str(cnt_p) + ".jpg",im_blank)
                 cv2.putText(im_rd, "faces: " + str(len(rects)), (20, 50), font, 1, (0, 0, 255), 1, cv2.LINE_AA)
     else:
         # 没有检测到人脸

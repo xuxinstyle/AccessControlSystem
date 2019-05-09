@@ -8,5 +8,7 @@ import com.system.po.User;
 public interface AdminPageMapper {
 
 	List<User> findByPaging(PagingVO pagingVO);
+
+	List<User> findByPagingUser(PagingVO pagingVO);
 	
 }

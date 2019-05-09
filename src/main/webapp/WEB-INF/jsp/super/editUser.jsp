@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page language="java" import="java.util.* ,com.system.po.User,java.awt.*" errorPage="jsps/error.jsp" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
-<%@page import="java.text.SimpleDateFormat"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,20 +27,12 @@
 
 
 <body>
-	<%
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		User user=(User)request.getAttribute("user");
-		String dateStr = sdf.format(user.getLastopentime());
-		request.setAttribute("dateStr", dateStr);
-		
-	%>
-	
 	<!-- 顶栏 -->
 	<jsp:include page="top.jsp"></jsp:include>
 	<!-- 中间主体 -->
 		<div class="container" id="content">
 		<div class="row">
-			
+			<jsp:include page="menu.jsp"></jsp:include>
 			<div class="col-md-10">
 				<div class="">
 				    <div class="panel-heading">
@@ -67,6 +58,7 @@
 									<label class="checkbox-inline">
 										<input type="radio" name="rolename" value="superadmin" checked>超级管理员
 									</label>
+				
 							    </div>
 							 
 							  
@@ -74,31 +66,33 @@
 							    <div class="col-sm-10">
 							      <input type="text" class="form-control" id="inputEmail3" name="password" placeholder="请输入密码" value="">
 							    </div>
+							  
+							  
 							    <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
 							    <div class="col-sm-10">
 							      <input type="text" class="form-control" id="inputEmail3" name="password2" placeholder="请输入密码" value="">
 							    </div>
+							    
 							    <label for="inputPassword3" class="col-sm-2 control-label">人脸信息录入</label>
-							    <div class="col-sm-10">
-							   		<!-- 此处不能使用<button />标签这样会默认提交表单 -->
-							   		<input type="button" onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
-							      
+							    <div class=""  >
+							   		<!-- 此处不能使用<button />标签，这样会默认提交表单 -->
+							   		<input type="button" style="margin-left:15px;height:32px;" onClick="location.href='/user/userFaceEntry?username=${user.username}'" value="开始录入"/>
+							     
 							    </div>
-							  
+							    
 							    <c:if test='${user.imagepath!=null}'>
 									<input style="display:none"   type="text" name="imagepath" value="${user.imagepath}"> 
 								</c:if>
+								
 							    <c:if test='${user.opennum!=null}'>
 									<input style="display:none"   type="text" name="opennum" value="${user.opennum}"> 
 								</c:if>
-							
 							    <c:if test='${user.lastopentime!=null}'>
-									<input style="display:none" type="datetime" name="lastopentime" value="${user.lastopentime }"/> 
+									<input style="display:none"   type="datetime" name="lastopentime" value="${user.lastopentime}"> 
 								</c:if>
 							    <c:if test='${user.csvpath!=null}'>
-									<input style="display:none"   type="text" name="csvpath" value="${user.csvpath}"/> 
+									<input style="display:none"   type="text" name="csvpath" value="${user.csvpath}"> 
 								</c:if>
-								
 								<div class="form-group" style="text-align: center">
 									<button class="btn btn-default" type="submit">提交</button>
 									<button class="btn btn-default" type="reset">重置</button>
@@ -120,16 +114,16 @@
 </body>
 	<script type="text/javascript">
 		
-	    $("#nav li:nth-child(4)").addClass("active")
+	    $("#nav li:nth-child(5)").addClass("active")
 	    function check() {
-	        if(reset.username.value==null||reset.username.value=="")
-	        {alert("请输入用户名");return false;}
-	        if(reset.password.value==null||reset.password.value=="")
+	        if(reset.username.value==""||reset.username.value==null)
+	        {alert("请输入账户名称");return false;}
+	        if(reset.password.value==""||reset.password.value==null)
 	        {alert("请输入重置密码");return false;}
-	        if(reset.password2.value==null||reset.password2.value=="")
+	        if(reset.password2.value==""||reset.password2.value==null)
 	        {alert("请再次输入密码");return false;}
 	        if(reset.password.value != reset.password2.value)
-	        {alert("两次密码不一致");return false;}
+	        {alert("两次密码不正确");return false;}
 	    }
 
 	</script>

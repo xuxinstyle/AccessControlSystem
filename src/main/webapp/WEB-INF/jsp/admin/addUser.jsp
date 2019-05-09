@@ -30,7 +30,7 @@
 	<!-- 中间主体 -->
 		<div class="container" id="content">
 		<div class="row">
-		
+		<jsp:include page="menu.jsp"></jsp:include>
 			<div class="col-sm-10">
 				<div class="">
 				    <div class="panel-heading">
@@ -98,7 +98,7 @@
 	</div>
 </body>
 	<script type="text/javascript">
-	    $("#nav li:nth-child(4)").addClass("active")
+	    $("#nav li:nth-child(5)").addClass("active")
 	    function check() {
 	        if(reset.username.value==""||reset.username.value==null)
 	        {alert("请输入账户名称");return false;}

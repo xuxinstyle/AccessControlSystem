@@ -7,5 +7,10 @@
 		where roleName!='superadmin' and roleName!='admin'
 		limit #{toPageNo}, #{pageSize}
 	</select>
-	
+	<select id="findByPagingUser" parameterType="PagingVO" resultType="User"> 
+		select * 
+		from user
+		where roleName=user
+		limit #{toPageNo}, #{pageSize}
+	</select>
 </mapper>

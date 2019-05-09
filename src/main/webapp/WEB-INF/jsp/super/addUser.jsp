@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-
+	<title>添加管理员页面</title>
+	<%@include file="../../../common/head.jspf" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- 引入bootstrap -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -29,7 +29,7 @@
 	<!-- 中间主体 -->
 		<div class="container" id="content">
 		<div class="row">
-		
+		<jsp:include page="menu.jsp"></jsp:include>
 			<div class="col-md-10">
 				<div class="">
 				    <div class="panel-heading">
@@ -37,7 +37,7 @@
 					    	<h1 style="text-align: center;">添加用户信息</h1>
 						</div>
 				    </div>
-				    <div class="panel-body">
+				    <div class="">
 						<form class="form-horizontal" name="reset" action="${pageContext.request.contextPath}/super/addUser" id="editfrom" method="post" onsubmit="return check()">
 							 
 							  <div class="form-group">
@@ -49,23 +49,21 @@
 							  
 							    <label for="inputPassword3" class="col-sm-2 control-label">用户权限</label>
 							    <div class="col-sm-10">
-								    <label class="checkbox-inline">
-									   	<input type="radio" name="rolename" value="admin" checked>管理员</input>
-									</label>
+								    
 									<label class="checkbox-inline">
-										<input type="radio" name="rolename" value="user"/>用户
+										<input type="radio" name="rolename" value="user" checked>用户</input>
 									</label>
 							    </div>
 							  
 							    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"/>
+							      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"/>
 								  
 							    </div>
 						
 							    <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
+							      <input type="password" class="form-control" id="inputPassword2" name="password2" placeholder="请输入密码"/>
 								  
 							    </div>
 							    <%--  <div id="contentHolder">
@@ -96,7 +94,7 @@
 	</div>
 </body>
 	<script type="text/javascript">
-	    $("#nav li:nth-child(4)").addClass("active")
+	    $("#nav li:nth-child(2)").addClass("active")
 	    function check() {
 	        if(reset.username.value==""||reset.username.value==null)
 	        {alert("请输入账户名称");return false;}

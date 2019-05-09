@@ -26,4 +26,12 @@ public interface SuperService {
     //根据名字模糊查询
     List<User> findByName(String username) throws Exception;
 
+	List<User> findByPagingadmin(Integer toPageNo) throws Exception;
+
+	List<User> findByPagingUser(Integer toPageNo) throws Exception;
+
+	int getCountAdmin() throws Exception;
+
+	List<User> checkHaveImage(List<User> list) throws Exception;
+
 }

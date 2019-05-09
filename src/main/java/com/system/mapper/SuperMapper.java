@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 
 public interface SuperMapper {
     int countByExample(UserExample example);
-
+    
+    int countAdminByExample(UserExample example);
+    
     int deleteByExample(UserExample example);
 
     int deleteByPrimaryKey(String username);

@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UploadController {
-	
+	private static Logger logger = Logger.getLogger(UploadController.class);
 	@RequestMapping(value="/upload")
 	@ResponseBody
 	public String upload(@RequestParam(value = "image", defaultValue = "") String data) throws IOException{
 		boolean b = GenerateImage(data);
-		System.out.println(b);
+		logger.info("生成图片:"+b);
+		//System.out.println(b);
 		if(b){
-			System.out.println("跳转至：login");
+			logger.info("跳转至登录登录页面：login");
+			//System.out.println("跳转至：login");
 			return "redirect:/facelogin";
 		}
 		

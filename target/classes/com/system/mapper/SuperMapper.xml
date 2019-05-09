@@ -173,7 +173,16 @@
   </insert>
   <select id="countByExample" parameterType="com.system.po.UserExample" resultType="java.lang.Integer" >
     select count(*) from user
-    where roleName!='superadmin'
+    where roleName='user'
+    <!-- <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if> -->
+    
+  </select>
+  
+  <select id="countAdminByExample" parameterType="com.system.po.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    where roleName='admin'
     <!-- <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if> -->

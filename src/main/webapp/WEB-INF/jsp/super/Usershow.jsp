@@ -34,8 +34,8 @@
 	<!-- style="background:#C8EFFE; color:#C8EFFE" -->
 	<div  class="container" id="content">
 		<div class="row">
-		
-			<div class="">
+		<jsp:include page="menu.jsp"></jsp:include>
+			<div class="col-md-10">
 				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
@@ -94,7 +94,7 @@
 									</td>
 									<td>
 										<button class="btn btn-default btn-xs btn-info" onClick="location.href='/super/faceEntry?username=${item.username}'">人脸信息录入</button>
-										<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/super/removeUser?username=${item.username}'">删除</button>
+										<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/super/removeUser?username=${item.username}&page=${pagingVO.curentPageNo}'">删除</button>
 										
 									</td>
 									
@@ -143,7 +143,7 @@
 </body>
 	<script type="text/javascript">
 		<%--设置菜单中--%>
-		$("#nav li:nth-child(1)").addClass("active")
+		$("#nav li:nth-child(2)").addClass("active")
         <c:if test="${pagingVO != null}">
         if (${pagingVO.curentPageNo} == ${pagingVO.totalCount}) {
             $(".pagination li:last-child").addClass("disabled")

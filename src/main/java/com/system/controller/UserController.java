@@ -3,6 +3,7 @@ package com.system.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ import com.system.service.UserFaceService;
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
-	
+	private static Logger logger = Logger.getLogger(UserController.class);
 	@Resource(name="loginServiceImpl")
 	private LoginService loginService;
 	
@@ -26,12 +27,13 @@ public class UserController {
 	
 	@RequestMapping(value="/userFaceEntry")
 	public String FaceEntryEdit(Model model, String username){
-		System.out.println("开始录入：");
+		logger.info("开始录入:"+username+" 人脸信息");
 		try {
 			//System.out.println(username);
 			userFaceService.getFace(username);
 			userFaceService.getFeatures(username);
 			User user = loginService.findByPrimaryKey(username);
+			logger.info("录入"+username+"人脸信息成功！");
 			//System.out.println("录入成功："+user.getUsername()+"权限："+user.getRolename());
 			model.addAttribute("user", user);
 			if("superadmin".equals(user.getRolename())){
@@ -43,6 +45,7 @@ public class UserController {
 			}
 			
 		} catch (Exception e) {
+			logger.error(username+"的人脸信息录入失败！");
 			//System.out.println("录入失败");
 			model.addAttribute("message", "录入人脸信息失败");
 			e.printStackTrace();
@@ -52,6 +55,5 @@ public class UserController {
 		
 		
 	}
-	
 	
 }

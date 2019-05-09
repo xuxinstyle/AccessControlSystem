@@ -32,8 +32,8 @@
 	<!-- 中间主体 -->
 	<div class="container" id="content">
 		<div class="row">
-		
-			<div class="">
+		<jsp:include page="menu.jsp"></jsp:include>
+			<div class="col-md-10">
 				<div class="">
 				    <div class="panel-heading">
 						<div class="row">
@@ -92,7 +92,7 @@
 									</td>
 									<td>
 										<button class="btn btn-default btn-xs btn-info" onClick="location.href='/admin/faceEntry?username=${item.username}'">人脸信息录入</button>
-										<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeUser?username=${item.username}'">删除</button>
+										<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeUser?username=${item.username}&page=${pagingVO.curentPageNo}'">删除</button>
 										
 									</td>
 									

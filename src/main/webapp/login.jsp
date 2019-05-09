@@ -247,6 +247,6 @@ a {
 		</DIV>
 	</form>
 	<div style="text-align:center;padding-top: 30px">Copyright ©
-		2018 门禁信息系统版权所有 >_<许昕 </div>
+		 门禁信息系统</div>
 </body>
 </html>

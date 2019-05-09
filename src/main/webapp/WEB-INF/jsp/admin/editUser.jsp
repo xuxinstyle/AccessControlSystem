@@ -32,7 +32,7 @@
 	<!-- 中间主体 -->
 		<div class="container" id="content">
 		<div class="row">
-			
+			<jsp:include page="menu.jsp"></jsp:include>
 			<div class="col-md-10">
 				<div class="">
 				    <div class="panel-heading">

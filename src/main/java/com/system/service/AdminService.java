@@ -13,7 +13,7 @@ public interface AdminService {
 
     //获取分页查询用户信息
     List<User> findByPaging(Integer toPageNo) throws Exception;
-
+    List<User> findByPagingUser(Integer toPageNo) throws Exception;
     //保存用户信息
     Boolean save(User user) throws Exception;
 
@@ -25,4 +25,6 @@ public interface AdminService {
 
     //根据名字模糊查询
     List<User> findByName(String username) throws Exception;
+    //检验是否有image
+    List<User> checkHaveImage(List<User> list) throws Exception;
 }
